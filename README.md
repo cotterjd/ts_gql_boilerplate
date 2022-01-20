@@ -3,4 +3,4 @@ starting point of a graphQL app built with TS and apollo-sever
 
 ## Getting started
 `npm install && npm run dev`<br>
-`curl http://localhost:4000`
+`curl -X POST -H "Content-Type: application/json" --data '{ "query": "{ quotes { text }}" }' http://localhost:4000`
