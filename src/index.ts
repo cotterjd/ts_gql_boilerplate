@@ -1,12 +1,17 @@
-import { ApolloServer, gql } from 'apollo-server'
+import { ApolloServer, gql } from 'apollo-server-express'
 import express, { Request, Response } from "express";
-import typeDefs from './schema' 
+import http from 'http'
+import typeDefs from './schema'
 import resolvers from './resolvers'
 
-const server = new ApolloServer({ typeDefs, resolvers }) 
-
-// TODO: clean up packages
-
-server.listen().then(({ url }) => {
-  console.log(`Server ready at ${url}`)
-})
+async function startServer () {
+  const app = express()
+  const httpServer = http.createServer(app)
+  const apolloServer = new ApolloServer({ typeDefs, resolvers })
+  await apolloServer.start()
+  apolloServer.applyMiddleware({ app })
+  
+  await new Promise<void>(resolve => httpServer.listen({
+    port: 4000
+  }, resolve))
+}
