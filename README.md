@@ -2,7 +2,7 @@
 starting point of a graphQL app built with TS and apollo-sever
 
 ## Getting started
-`$ git clone --depth=1 git@github.com:cotterjd/ts_gql_boilerplate.git`<br>
+`$ git clone --depth=1 git@github.com:cotterjd/ts_gql_boilerplate.git # clone repo, take only last commit from history`<br>
 `$ mv ts_gql_boilerplate actual_project_name`<br>
 `$ cd actual_project_name`<br>
 `$ npm install && npm run dev`<br>
